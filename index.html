@@ -880,9 +880,13 @@
             50% { transform: translateY(-20px) rotate(180deg); }
         }
 
-        .image-container {
-            text-align: center;
-            padding: 2rem;
+        .images-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            padding: 3rem;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             border: 1px solid rgba(239, 68, 68, 0.3);
@@ -891,7 +895,7 @@
             overflow: hidden;
         }
 
-        .image-container::before {
+        .images-container::before {
             content: '';
             position: absolute;
             top: 0;
@@ -902,18 +906,42 @@
             transition: left 0.5s ease;
         }
 
-        .image-container:hover::before {
+        .images-container:hover::before {
             left: 100%;
         }
 
-        .image-container:hover {
+        .images-container:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(239, 68, 68, 0.3);
         }
 
+        .image-container {
+            text-align: center;
+            padding: 0;
+            background: none;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: visible;
+        }
+
+        .image-container::before {
+            display: none;
+        }
+
+        .image-container:hover::before {
+            display: none;
+        }
+
+        .image-container:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
         .centered-image {
-            width: 400px;
-            height: 400px;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
@@ -932,6 +960,31 @@
             font-size: 1.2rem;
             font-weight: bold;
         }
+
+        @media (max-width: 768px) {
+            .images-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                padding: 1.5rem;
+                max-width: 100%;
+            }
+
+            .image-container {
+                padding: 0;
+            }
+
+            .centered-image {
+                height: 180px;
+                max-width: 100%;
+            }
+
+            .image-caption {
+                font-size: 0.9rem;
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+
 
     </style>
 </head>
@@ -999,13 +1052,21 @@
             
             <div class="image-container">
                 <img src="20250702_110254.jpg" 
-                    alt="Beautiful landscape" 
-                    class="centered-image">
-                <img src="Screenshot_20250514_105105_Discord.jpg"
+                     alt="Beautiful landscape" 
+                     class="centered-image">
+                <img src="Screenshot_20250514_105105_Discord 2.jpg"
                      alt="Cats"
                      class="centered-image">
-                <p class="image-caption">A perfectly centered image</p>
             </div>
+
+            <div class="image-container">
+                <img src="20250604_085658.jpg" 
+                     alt="Forest scene" 
+                     class="centered-image">
+                <p class="image-caption">Forest Path</p>
+            </div>
+
+            
         </div>
     </section>
 
